@@ -11,6 +11,7 @@ public class ClearDirector : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            Time.timeScale = 1f;
             SceneManager.LoadScene("TitleScene");
         }
     }

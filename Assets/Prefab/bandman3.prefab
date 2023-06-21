@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41b459234609517449984ff2dabc0033, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 8
   gravity: 0
   nonVisibleAct: 0
 --- !u!70 &3632152505194477742
@@ -177,3 +177,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 351b846551f0b604c8d7edaa12e057a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  breakEffect: {fileID: 8546487767990872973, guid: 852f49dcb81fb4a4baf9026a3aac5498, type: 3}

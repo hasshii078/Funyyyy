@@ -2,13 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
-public class TitleButton : MonoBehaviour
+public class Sousakirikae : MonoBehaviour
 {
     public void OnClickStartButton()
     {
-        SceneManager.LoadScene("TitleScene");
-        Time.timeScale = 1f;
+        SceneManager.LoadScene("SousaScene");
     }
 }

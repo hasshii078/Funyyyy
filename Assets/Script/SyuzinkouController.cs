@@ -22,7 +22,7 @@ public class SyuzinkouController : MonoBehaviour
     private TimeScript timeScript;
 
     public int onpuHP; //主人公の最大HP
-    private static int wkHP; //主人公の現在のHP
+    private int wkHP; //主人公の現在のHP
     public Slider hpSlider; //HPバー
 
 
@@ -91,7 +91,7 @@ public class SyuzinkouController : MonoBehaviour
         }*/
 
         //画面外に出たら最初から
-        if (transform.position.y < -10)
+        if (transform.position.y < -21)
         {
             SceneManager.LoadScene("GameOverScene");
         }
@@ -133,6 +133,17 @@ public class SyuzinkouController : MonoBehaviour
             if (wkHP == 0)
             {
                SceneManager.LoadScene("GameOverScene");
+            }
+        }
+        if (collision.gameObject.CompareTag("Enemy1"))
+        {
+            canJump = true;
+            wkHP -= 50;
+            hpSlider.value = (float)wkHP / (float)onpuHP;//スライダは０?1.0で表現するため最大HPで割って少数点数字に変換
+                                                         // HPが0以下になった場合、自らを消す
+            if (wkHP == 0)
+            {
+                SceneManager.LoadScene("GameOverScene");
             }
         }
 

@@ -1,2 +1,2 @@
-# Funto
+# Fun
  

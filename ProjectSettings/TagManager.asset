@@ -9,6 +9,7 @@ TagManager:
   - gosenhu
   - Onpu
   - Enemy
+  - Enemy1
   layers:
   - Default
   - TransparentFX

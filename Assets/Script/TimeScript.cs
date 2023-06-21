@@ -19,7 +19,9 @@ public class TimeScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        playTime1 += Time.deltaTime; //ŽžŠÔŒo‰ß‚Å‰ÁŽZ
-        timeCuTMP.text = playTime1.ToString("f1");
-    }
+       
+            playTime1 += Time.deltaTime; //ŽžŠÔŒo‰ß‚Å‰ÁŽZ
+            timeCuTMP.text = playTime1.ToString("f1");
+      }
+    
 }
