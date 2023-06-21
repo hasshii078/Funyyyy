@@ -22,11 +22,11 @@ public class BachAttacks : MonoBehaviour
     private GameObject organobj;
     public int count=0;//パイプを落とした回数を数える
 
-    public float speed = 0.2f;//バッハ移動スピード
+    public float speed = 0.5f;//バッハ移動スピード
     public int AttackType=0;//バッハがどの攻撃をするか決める変数
-    //１：画面端から光線　２：パイプオルガン投下
+    //１：画面端から光線　２：パイプオルガン投下 3:回転突進
 
-    private int[,] posi=new int[2,2] { { -10, 10 }, { 10, 0 } };//ビーム発射時のx,y座標候補。{{x1,x2},{y1,y2}}。
+    private int[,] posi=new int[2,2] { { -10, 10 }, { 3, 0 } };//ビーム発射時のx,y座標候補。{{x1,x2},{y1,y2}}。
     
     Vector3 movePosition;//ビーム発射時のバッハが行く場所
 
@@ -64,7 +64,7 @@ public class BachAttacks : MonoBehaviour
         if (AttackType == 0)
         {
             movePosition = new Vector3(posi[0, Random.Range(0, 2)], posi[1, Random.Range(0, 2)], 0);//ビーム時の移動場所を予め決める
-            AttackType = Random.Range(1, 3);//(n,m)でn以上m未満のランダムな整数
+            AttackType = Random.Range(1, 4);//(n,m)でn以上m未満のランダムな整数
         }
         else if (AttackType == 1) //レーザー攻撃が選ばれた場合
         {
@@ -73,6 +73,10 @@ public class BachAttacks : MonoBehaviour
         else if (AttackType == 2) 
         {
             Attack_2();
+        }
+        else if (AttackType == 3) 
+        {
+            Attack_3();
         }
         
     }
@@ -139,5 +143,45 @@ public class BachAttacks : MonoBehaviour
         Attacking = 2;
         //count++;
         //Debug.Log(count);
+    }
+    //回転突進
+    void Attack_3() 
+    {
+        float bachpositionY=0;//主人公と同じy座標に移動するため、主人公のy座標を取得する
+        Vector3 bachstart=new Vector3(-30,0,0);//突進開始位置
+        Vector3 bachgole=new Vector3(30,0,0);//終了位置
+        if (Attacking == 0)
+        {
+            bachpositionY=playerTransform.position.y;
+            bachstart = new Vector3(-30, bachpositionY, 0);
+            
+            Attacking = 1;//Attacking=0の時に主人公のy座標を取得、そこから変化しないように１に変える
+        }
+        if (Attacking == 1)
+        {
+            this.bach.transform.position = Vector3.MoveTowards(bach.transform.position, bachstart, speed * 2);//バッハ画面端に移動
+            if (this.bach.transform.position == bachstart)
+            {
+                Attacking = 2;//移動完了を知らせる
+            }
+        }
+        if(Attacking == 2) 
+        {
+            bachgole = new Vector3(30, bachpositionY, 0);
+            this.bach.transform.Rotate(0,0,20);
+            this.bach.transform.position = Vector3.MoveTowards(bach.transform.position,bachgole,speed*2);//回転しながら突撃
+            if (this.bach.transform.position == bachgole) 
+            {
+                Attacking = 3;//攻撃終了
+            }
+        }
+        //攻撃終了
+        if (Attacking == 3) 
+        {
+            this.bach.transform.rotation = Quaternion.Euler(0,0,0);//角度を元に戻す
+            AttackType = 0;
+            Attacking = 0;
+        }
+
     }
 }

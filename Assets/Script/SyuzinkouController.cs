@@ -130,7 +130,7 @@ public class SyuzinkouController : MonoBehaviour
             wkHP -= 20;
             hpSlider.value = (float)wkHP / (float)onpuHP;//スライダは０?1.0で表現するため最大HPで割って少数点数字に変換
                                                           // HPが0以下になった場合、自らを消す
-            if (wkHP == 0)
+            if (wkHP <= 0)
             {
                SceneManager.LoadScene("GameOverScene");
             }
@@ -141,7 +141,7 @@ public class SyuzinkouController : MonoBehaviour
             wkHP -= 50;
             hpSlider.value = (float)wkHP / (float)onpuHP;//スライダは０?1.0で表現するため最大HPで割って少数点数字に変換
                                                          // HPが0以下になった場合、自らを消す
-            if (wkHP == 0)
+            if (wkHP <= 0)
             {
                 SceneManager.LoadScene("GameOverScene");
             }
