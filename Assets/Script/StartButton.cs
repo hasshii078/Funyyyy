@@ -10,9 +10,14 @@ public class StartButton : MonoBehaviour
         //SceneManager.LoadScene("GameScene");
         Initiate.Fade("GameScene", Color.black, 1.0f);
         Time.timeScale = 1f;
-        TimeScript.playTime1 = 0;
+        Invoke("TimeReset", 1.0f);//retryボタンを押した際、フェードアウト中に時間がリセットされてしまうのを防ぐため
 
     }
+    void TimeReset()
+    {
+        TimeScript.playTime1 = 0;
+    }
+
 }
 
 
