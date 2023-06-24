@@ -25,6 +25,8 @@ public class SyuzinkouController : MonoBehaviour
     private int wkHP; //主人公の現在のHP
     public Slider hpSlider; //HPバー
 
+    public AudioClip kougeki; //主人公が音符投げたら鳴る効果音
+    AudioSource audioSource;
 
     void Start()
     {
@@ -36,6 +38,8 @@ public class SyuzinkouController : MonoBehaviour
 
         hpSlider.value = (float)onpuHP; //HPバーの最初の値(最大HP)を設定
         wkHP = onpuHP; //現在のHPを最大HPに設定
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -100,8 +104,7 @@ public class SyuzinkouController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.B))
         {
             Instantiate(OnpuPrefab, transform.position, Quaternion.identity);
-            //this.animator.SetBool("attack",true);
-
+            audioSource.PlayOneShot(kougeki);
         }
 
         //Vを押したら鎌で攻撃
@@ -130,7 +133,7 @@ public class SyuzinkouController : MonoBehaviour
             wkHP -= 20;
             hpSlider.value = (float)wkHP / (float)onpuHP;//スライダは０?1.0で表現するため最大HPで割って少数点数字に変換
                                                           // HPが0以下になった場合、自らを消す
-            if (wkHP == 0)
+            if (wkHP <= 0)
             {
                SceneManager.LoadScene("GameOverScene");
             }
@@ -141,7 +144,7 @@ public class SyuzinkouController : MonoBehaviour
             wkHP -= 50;
             hpSlider.value = (float)wkHP / (float)onpuHP;//スライダは０?1.0で表現するため最大HPで割って少数点数字に変換
                                                          // HPが0以下になった場合、自らを消す
-            if (wkHP == 0)
+            if (wkHP <= 0)
             {
                 SceneManager.LoadScene("GameOverScene");
             }

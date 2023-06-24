@@ -20,6 +20,7 @@ public class BachMove : MonoBehaviour
     private int wkHP; //ìGÇÃåªç›ÇÃHP
     public Slider hpSlider; //HPÉoÅ[
 
+    
     // Start is called before the first frame update
     public void OnpuHit1()
     {
@@ -28,6 +29,7 @@ public class BachMove : MonoBehaviour
                                                       // HPÇ™0à»â∫Ç…Ç»Ç¡ÇΩèÍçáÅAé©ÇÁÇè¡Ç∑
         if (wkHP == 0)
         {
+            
             Destroy(this.gameObject,3f);
             
             Initiate.Fade("ClearScene", Color.black, 2.0f);
