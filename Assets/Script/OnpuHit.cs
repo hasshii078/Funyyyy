@@ -14,10 +14,13 @@ public class OnpuHit : MonoBehaviour
         Toonkigou = GameObject.Find("toonkigou");
 		code = Toonkigou.GetComponent<SyuzinkouController>();
 		Lr = code.lr;
-
     }
 
-	void FixedUpdate()
+    void OnBecameInvisible()
+    {
+		Destroy(this.gameObject);
+    }
+    void FixedUpdate()
 	{
 		//ƒg‰¹‹L†‚ÌŒü‚­•ûŒü‚É”­Ë‚³‚ê‚é
 		if (Lr)
