@@ -1729,7 +1729,7 @@ MonoBehaviour:
   speed: 2
   gravity: 0
   player: {fileID: 1809954989}
-  enemyHP: 10
+  enemyHP: 100
   hpSlider: {fileID: 730704087}
 --- !u!114 &1444343169
 MonoBehaviour:
