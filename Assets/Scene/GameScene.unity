@@ -3524,7 +3524,7 @@ MonoBehaviour:
   objectToThrow: {fileID: 0}
   throwForce: 10
   OnpuPrefab: {fileID: 4498878194302161388, guid: 1885ec5840d638d428d2d20ce63a49dd, type: 3}
-  MoveSpeed: 20
+  MoveSpeed: 25
   lr: 1
   onpuHP: 100
   hpSlider: {fileID: 965217380}

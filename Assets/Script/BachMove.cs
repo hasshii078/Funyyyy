@@ -33,7 +33,7 @@ public class BachMove : MonoBehaviour
             Destroy(this.gameObject,3f);
             
             Initiate.Fade("ClearScene", Color.black, 2.0f);
-            //SceneManager.LoadScene("ClearScene");
+                        //SceneManager.LoadScene("ClearScene");
             //Invoke("LoadClearScene", 4f);
         }
             

@@ -18,6 +18,10 @@ public class TimeScore : MonoBehaviour
             record = 1;
         }
         time.text = cleartime.ToString("f1");//ƒ^ƒCƒ€‚ð•\Ž¦
+
+        var milcsec = (int)(cleartime * 1000);
+        var timeScore = new System.TimeSpan(0, 0, 0, 0, milcsec);
+        naichilab.RankingLoader.Instance.SendScoreAndShowRanking(timeScore);
     }
 
     // Update is called once per frame
