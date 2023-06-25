@@ -21,12 +21,10 @@ public class KamaHit : MonoBehaviour
 		if (trigger.gameObject.GetComponent<BandmanController>())
 		{
 			trigger.gameObject.GetComponent<BandmanController>().OnpuHit1();
-			Destroy(this.gameObject);
 		}
 		if (trigger.gameObject.GetComponent<BachMove>())
 		{
 			trigger.gameObject.GetComponent<BachMove>().OnpuHit1();
-			Destroy(this.gameObject);
 		}
 	}
 }

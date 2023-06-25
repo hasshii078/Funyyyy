@@ -638,7 +638,8 @@ GameObject:
   - component: {fileID: 504490317}
   - component: {fileID: 504490316}
   - component: {fileID: 504490319}
-  m_Layer: 0
+  - component: {fileID: 504490320}
+  m_Layer: 8
   m_Name: kama1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -774,12 +775,24 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1.4
+--- !u!114 &504490320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 504490314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc0e380ca6e91e14bb3e6acd7cfe8794, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &668459932
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1767,7 +1780,7 @@ MonoBehaviour:
   speed: 2
   gravity: 0
   player: {fileID: 1809954989}
-  enemyHP: 20
+  enemyHP: 100
   hpSlider: {fileID: 730704087}
 --- !u!114 &1444343169
 MonoBehaviour:

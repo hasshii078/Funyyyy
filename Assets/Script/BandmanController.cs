@@ -10,7 +10,7 @@ public class BandmanController : MonoBehaviour
     //public AudioClip bakuhatsu; //主人公が音符投げたら鳴る効果音
     //AudioSource audioSource;
 
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,4 +36,7 @@ public class BandmanController : MonoBehaviour
         //エフェクト発生する場所を決定
         effect.transform.position = gameObject.transform.position;
     }
+
+    
+
 }
