@@ -9,24 +9,39 @@ EditorBuildSettings:
     path: Assets/Scene/TitleScene.unity
     guid: 7b697381fba0d75409b3355b3b0c3b0f
   - enabled: 1
+    path: Assets/Scene/StageSelectScene.unity
+    guid: 3b9bc12e5b093214d967f96c8c80b1a8
+  - enabled: 1
     path: Assets/Scene/SousaScene.unity
     guid: de420f6da8030164c81390555138b015
   - enabled: 1
     path: Assets/Scene/GameScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
+    path: Assets/Scene/GameHardScene.unity
+    guid: 36a374dcdf3232b4ba150ba535db66fd
+  - enabled: 1
     path: Assets/Scene/GameOverScene.unity
     guid: b58e147de245169499179bc7d21d5f4f
   - enabled: 1
-    path: Assets/Scene/BossScene.unity
+    path: Assets/Scene/GameOverHardScene.unity
+    guid: a10e56d4ef61a4d4d8395aab9ec04647
+  - enabled: 1
+    path: Assets/Scene/BossNormalScene.unity
+    guid: eececb90a17e73f44b30566f3e450c5c
+  - enabled: 1
+    path: Assets/Scene/BossHardScene.unity
     guid: b9f2b8b024f90934eb286b785e129e62
   - enabled: 1
     path: Assets/Scene/ClearScene.unity
     guid: ae7bd911bf911a042a7d774fd511e274
   - enabled: 1
+    path: Assets/Scene/ClearSceneH.unity
+    guid: 32e729be201125b4a9b3d394a9a64a45
+  - enabled: 1
     path: Assets/naichilab/unity-simple-ranking/Scenes/Ranking.unity
     guid: 152244f5855414ac4a3874f14efa583c
-  - enabled: 1
-    path: Assets/Scene/RankingScene.unity
-    guid: e853e50755e57f84d82af17bc0b591fa
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects: {}

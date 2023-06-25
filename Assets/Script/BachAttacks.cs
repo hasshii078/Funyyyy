@@ -5,10 +5,12 @@ using UnityEngine;
 
 public class BachAttacks : MonoBehaviour
 {
+    public static float timelimit;//即死攻撃用に時間測る
+    private Animator anim;
 
     public GameObject bach;//バッハ格納用
-    public Sprite Bachbright;//バッハ攻撃中の画像
-    public Sprite BachNormal;//バッハ通常画像
+    //public Sprite Bachbright;//バッハ攻撃中の画像
+    //public Sprite BachNormal;//バッハ通常画像
     SpriteRenderer BachSprite;//バッハの画像の種類を変えるため用意
 
     public GameObject player;//主人公格納
@@ -20,14 +22,17 @@ public class BachAttacks : MonoBehaviour
 
     public GameObject organ;//パイプオルガン
     private GameObject organobj;
-    public int count=0;//パイプを落とした回数を数える
+    public int count = 0;//パイプを落とした回数を数える
+
+    public GameObject end;//即死攻撃のやつ
+    public GameObject endobj;
 
     public float speed = 0.5f;//バッハ移動スピード
-    public int AttackType=0;//バッハがどの攻撃をするか決める変数
+    public int AttackType = 0;//バッハがどの攻撃をするか決める変数
     //１：画面端から光線　２：パイプオルガン投下 3:回転突進
 
-    private int[,] posi=new int[2,2] { { -10, 10 }, { 3, 0 } };//ビーム発射時のx,y座標候補。{{x1,x2},{y1,y2}}。
-    
+    private int[,] posi = new int[2, 2] { { -20, 20 }, { 3, 0 } };//ビーム発射時のx,y座標候補。{{x1,x2},{y1,y2}}。
+
     Vector3 movePosition;//ビーム発射時のバッハが行く場所
 
     public int Attacking = 0;//バッハが攻撃前か攻撃中か攻撃後か(0,1,2)
@@ -35,13 +40,15 @@ public class BachAttacks : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        BachSprite = bach.GetComponent<SpriteRenderer>();//バッハのスプライトを取得
-        
+        //BachSprite = bach.GetComponent<SpriteRenderer>();//バッハのスプライトを取得
+        anim = bach.GetComponent<Animator>();
+
         playerTransform = player.transform;//主人公の座標を取得
         movePosition = new Vector3(posi[0, Random.Range(0, 2)], posi[1, Random.Range(0, 2)], 0);//ビーム時の移動場所を予め決める
 
         laser = Resources.Load<GameObject>("Laser");//ResourcesフォルダからLaserプレハブを読み込む
         organ = Resources.Load<GameObject>("Organ");//ResourcesフォルダからOrganプレハブを読み込む
+        end = Resources.Load<GameObject>("End");//ResourcesフォルダからEndプレハブを読み込む
 
         laserpoint = laser.transform;//よくわからないがこの一文がないと動かないので消さない
 
@@ -50,65 +57,77 @@ public class BachAttacks : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //主人公側を向く
-        if (this.bach.transform.position.x < playerTransform.position.x)
+        timelimit += Time.deltaTime;//時間を測る
+
+        if (timelimit < 20)//20秒経つまではこれ
         {
-            transform.localScale = new Vector3(3, 3, 1);
+            //主人公側を向く
+            if (this.bach.transform.position.x < playerTransform.position.x)
+            {
+                transform.localScale = new Vector3(3, 3, 1);
+            }
+            else
+            {
+                transform.localScale = new Vector3(-3, 3, 1);
+            }
+
+            //もし攻撃中でないなら新しく攻撃をセット
+            if (AttackType == 0)
+            {
+                movePosition = new Vector3(posi[0, Random.Range(0, 2)], posi[1, Random.Range(0, 2)], 0);//ビーム時の移動場所を予め決める
+                AttackType = Random.Range(1, 4);//(n,m)でn以上m未満のランダムな整数
+            }
+            else if (AttackType == 1) //レーザー攻撃が選ばれた場合
+            {
+                Attack_1();
+            }
+            else if (AttackType == 2)
+            {
+                Attack_2();
+            }
+            else if (AttackType == 3)
+            {
+                Attack_3();
+            }
         }
-        else
+        else if (timelimit >= 20)//30秒経ったら即死
         {
-            transform.localScale = new Vector3(-3, 3, 1);
+            Attack_toDeath();
         }
 
-        //もし攻撃中でないなら新しく攻撃をセット
-        if (AttackType == 0)
-        {
-            movePosition = new Vector3(posi[0, Random.Range(0, 2)], posi[1, Random.Range(0, 2)], 0);//ビーム時の移動場所を予め決める
-            AttackType = Random.Range(1, 4);//(n,m)でn以上m未満のランダムな整数
-        }
-        else if (AttackType == 1) //レーザー攻撃が選ばれた場合
-        {
-            Attack_1();
-        }
-        else if (AttackType == 2) 
-        {
-            Attack_2();
-        }
-        else if (AttackType == 3) 
-        {
-            Attack_3();
-        }
-        
     }
 
     //レーザー攻撃
-    void Attack_1() 
+    void Attack_1()
     {
         //目的地に移動する
         this.bach.transform.position = Vector3.MoveTowards(bach.transform.position, movePosition, speed);
-        if (movePosition == this.bach.transform.position) 
+        anim.SetBool("bright", true);//バッハが光るアニメに移行
+        if (movePosition == this.bach.transform.position)
         {
             //まだビーム撃ってない(Attacking==0)なら撃つ
-            if (Attacking == 0) 
+            if (Attacking == 0)
             {
                 Attacking = 1;//状態を攻撃中に設定
-                BachSprite.sprite = Bachbright;//バッハを光ってる画像に変える
+                
+                //BachSprite.sprite = Bachbright;//バッハを光ってる画像に変える
                 laserobj = Instantiate(laser, this.bach.transform.position, Quaternion.identity);//レーザーをオブジェクトにして画面に表示
                 laserpoint.position = playerTransform.position;//レーザーの目的地だったが主人公の座標を示すものにしてみる。この時点で座標を取り、ビーム発射中随時主人公の座標を更新しないようにする。
-                Invoke("DestroyLaser",2.0f);
+                Invoke("DestroyLaser", 2.0f);
             }
         }
         //攻撃終了(AttackType=0にする)
-        if (Attacking==2) 
+        if (Attacking == 2)
         {
-            BachSprite.sprite = BachNormal;//バッハの画像を戻す
-            AttackType =0;//攻撃前の状態へ
+            anim.SetBool("bright",false);
+            //BachSprite.sprite = BachNormal;//バッハの画像を戻す
+            AttackType = 0;//攻撃前の状態へ
             Attacking = 0;//状態を攻撃前に設定
         }
 
     }
     //レーザーの元になる弾が消えるようにする
-    void DestroyLaser() 
+    void DestroyLaser()
     {
         Destroy(laserobj);//弾消す
         Attacking = 2;//状態を攻撃終了に設定
@@ -117,10 +136,10 @@ public class BachAttacks : MonoBehaviour
     //パイプ投下攻撃
     void Attack_2()
     {
-        this.bach.transform.position = Vector3.MoveTowards(bach.transform.position,new Vector3(0,20,0),speed);//バッハ上に移動
-        //Attacking = 1;//状態を攻撃中に設定
-         
-        if (Attacking ==0)
+        this.bach.transform.position = Vector3.MoveTowards(bach.transform.position, new Vector3(0, 20, 0), speed);//バッハ上に移動
+                                                                                                                  //Attacking = 1;//状態を攻撃中に設定
+
+        if (Attacking == 0)
         {
             Attacking = 1;
 
@@ -145,16 +164,16 @@ public class BachAttacks : MonoBehaviour
         //Debug.Log(count);
     }
     //回転突進
-    void Attack_3() 
+    void Attack_3()
     {
-        float bachpositionY=0;//主人公と同じy座標に移動するため、主人公のy座標を取得する
-        Vector3 bachstart=new Vector3(-30,0,0);//突進開始位置
-        Vector3 bachgole=new Vector3(30,0,0);//終了位置
+        float bachpositionY = 0;//主人公と同じy座標に移動するため、主人公のy座標を取得する
+        Vector3 bachstart = new Vector3(-30, 0, 0);//突進開始位置
+        Vector3 bachgole = new Vector3(30, 0, 0);//終了位置
         if (Attacking == 0)
         {
-            bachpositionY=playerTransform.position.y;
+            bachpositionY = playerTransform.position.y;
             bachstart = new Vector3(-30, bachpositionY, 0);
-            
+
             Attacking = 1;//Attacking=0の時に主人公のy座標を取得、そこから変化しないように１に変える
         }
         if (Attacking == 1)
@@ -165,23 +184,36 @@ public class BachAttacks : MonoBehaviour
                 Attacking = 2;//移動完了を知らせる
             }
         }
-        if(Attacking == 2) 
+        if (Attacking == 2)
         {
             bachgole = new Vector3(30, bachpositionY, 0);
-            this.bach.transform.Rotate(0,0,20);
-            this.bach.transform.position = Vector3.MoveTowards(bach.transform.position,bachgole,speed*2);//回転しながら突撃
-            if (this.bach.transform.position == bachgole) 
+            this.bach.transform.Rotate(0, 0, 20);
+            this.bach.transform.position = Vector3.MoveTowards(bach.transform.position, bachgole, speed * 2);//回転しながら突撃
+            if (this.bach.transform.position == bachgole)
             {
                 Attacking = 3;//攻撃終了
             }
         }
         //攻撃終了
-        if (Attacking == 3) 
+        if (Attacking == 3)
         {
-            this.bach.transform.rotation = Quaternion.Euler(0,0,0);//角度を元に戻す
+            this.bach.transform.rotation = Quaternion.Euler(0, 0, 0);//角度を元に戻す
             AttackType = 0;
             Attacking = 0;
         }
 
     }
+
+    //即死攻撃
+    void Attack_toDeath()
+    {
+        this.bach.transform.position = new Vector3(0, 10, 0);
+        this.bach.transform.Rotate(0, 0, 20);
+        if (Attacking != 4)
+        {
+            endobj = Instantiate(end, new Vector3(0, 10, 0), Quaternion.identity);//オブジェクトにして画面に表示
+            Attacking = 4;//何個も生成されないようにする
+        }
+    }
 }
+

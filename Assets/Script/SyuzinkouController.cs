@@ -157,8 +157,9 @@ public class SyuzinkouController : MonoBehaviour
     {
         if (other.CompareTag("flag"))
         {
-            SceneManager.LoadScene("BossScene");
+            SceneManager.LoadScene("BossNormalScene");
         }
+
     }
 
     

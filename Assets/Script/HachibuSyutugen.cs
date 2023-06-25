@@ -14,12 +14,12 @@ public class HachibuSyutugen : MonoBehaviour
     {
         buki.SetActive(false);
     }
+   
     // Start is called before the first frame update
     void Start()
     {
-        
+        buki.SetActive(false);
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -27,11 +27,17 @@ public class HachibuSyutugen : MonoBehaviour
         if (Input.GetKey(KeyCode.V))
         {
             buki.SetActive(true);//š”ª•ª‰¹•„‚ğ•\¦‚·‚é
-
+            Attack();
         }
         else
         {
             Invoke("BukiHide", 0.3f);//šƒ{ƒ^ƒ“‰Ÿ‰ºŒã”•b‘Ò‚Á‚Ä‚©‚ç”ª•ª‰¹•„‚ğ‰B‚·
         }
+    }
+    void Attack()
+    {
+        
+            
+        
     }
 }

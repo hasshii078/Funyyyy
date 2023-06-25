@@ -14,13 +14,16 @@ public class BachMove : MonoBehaviour
 
     private Rigidbody2D rb = null;
     private SpriteRenderer sr = null;
-    private bool rightTleftF = true;
+    //private bool rightTleftF = true;
 
     public int enemyHP; //敵の最大HP
     private int wkHP; //敵の現在のHP
     public Slider hpSlider; //HPバー
 
-    
+    //バッハ爆散のためにアニメータ使う
+    private Animator anim;
+
+
     // Start is called before the first frame update
     public void OnpuHit1()
     {
@@ -29,10 +32,10 @@ public class BachMove : MonoBehaviour
                                                       // HPが0以下になった場合、自らを消す
         if (wkHP == 0)
         {
+            anim.SetBool("win", true);
+            Destroy(this.gameObject,5f);
             
-            Destroy(this.gameObject,3f);
-            
-            Initiate.Fade("ClearScene", Color.black, 2.0f);
+            Initiate.Fade("ClearScene", Color.black, 5.0f);
                         //SceneManager.LoadScene("ClearScene");
             //Invoke("LoadClearScene", 4f);
         }
@@ -47,6 +50,7 @@ public class BachMove : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
         playerTransform = player.transform;
 
         hpSlider.value = (float)enemyHP; //HPバーの最初の値(最大HP)を設定
