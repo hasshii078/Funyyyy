@@ -611,6 +611,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 293c77642a4bf32499e9b9be9df270c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bakuhatsu: {fileID: 0}
 --- !u!114 &473478692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -636,6 +637,7 @@ GameObject:
   - component: {fileID: 504490318}
   - component: {fileID: 504490317}
   - component: {fileID: 504490316}
+  - component: {fileID: 504490319}
   m_Layer: 0
   m_Name: kama1
   m_TagString: Untagged
@@ -651,8 +653,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 504490314}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
+  m_LocalPosition: {x: 0.4, y: 0.5, z: 0}
+  m_LocalScale: {x: 2, y: 2.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1809954995}
@@ -743,6 +745,41 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!58 &504490319
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 504490314}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 1.4
 --- !u!1001 &668459932
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1577,6 +1614,7 @@ GameObject:
   - component: {fileID: 1444343166}
   - component: {fileID: 1444343168}
   - component: {fileID: 1444343169}
+  - component: {fileID: 1444343170}
   m_Layer: 6
   m_Name: Bach
   m_TagString: Enemy
@@ -1729,7 +1767,7 @@ MonoBehaviour:
   speed: 2
   gravity: 0
   player: {fileID: 1809954989}
-  enemyHP: 100
+  enemyHP: 20
   hpSlider: {fileID: 730704087}
 --- !u!114 &1444343169
 MonoBehaviour:
@@ -1744,16 +1782,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bach: {fileID: 1444343163}
-  Bachbright: {fileID: 21300000, guid: 313e530832bb9b1488de580dc830b263, type: 3}
-  BachNormal: {fileID: 21300000, guid: 8ffac381663ee8540855946314047dd3, type: 3}
   player: {fileID: 1809954989}
   laser: {fileID: 474197774389284898, guid: d8c24fe0b9370aa4387b528746b73cbc, type: 3}
   laserpoint: {fileID: 0}
   organ: {fileID: 0}
   count: 0
+  end: {fileID: 0}
+  endobj: {fileID: 0}
   speed: 0.5
   AttackType: 0
   Attacking: 0
+--- !u!95 &1444343170
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1444343163}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 978d808f3dd35a548a40c64cca55b3a3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1467884479
 GameObject:
   m_ObjectHideFlags: 0

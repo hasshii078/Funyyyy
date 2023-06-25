@@ -7,14 +7,14 @@ public class BandmanController : MonoBehaviour
 {
     public GameObject breakEffect; //倒したときのエフェクト
 
-    public AudioClip bakuhatsu; //主人公が音符投げたら鳴る効果音
-    AudioSource audioSource;
+    //public AudioClip bakuhatsu; //主人公が音符投げたら鳴る効果音
+    //AudioSource audioSource;
 
     
     // Start is called before the first frame update
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
+        //audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -25,7 +25,7 @@ public class BandmanController : MonoBehaviour
     public void OnpuHit1()
     {
         Destroy(this.gameObject);
-        audioSource.PlayOneShot(bakuhatsu);
+        //audioSource.PlayOneShot(bakuhatsu);
         GenerateEffect();　//エフェクト発生
     }
 

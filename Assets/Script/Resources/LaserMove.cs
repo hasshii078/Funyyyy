@@ -29,10 +29,12 @@ public class LaserMove : MonoBehaviour
         {
             //this.GetComponent<Rigidbody2D>().velocity = new Vector2(20, 0);
             transform.Translate(0.5f, 0, 0);
+            transform.localScale = new Vector3(3,3,1);
         }
         else
         {
             transform.Translate(-0.5f, 0, 0);
+            transform.localScale = new Vector3(-3, 3, 1);
         }
         //laserpoint.position = playerTransform.position + (playerTransform.position - transform.position);
         
