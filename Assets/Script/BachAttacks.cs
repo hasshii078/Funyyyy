@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class BachAttacks : MonoBehaviour
 {
-    public static float timelimit;//即死攻撃用に時間測る
+    public static float timelimit=0f;//即死攻撃用に時間測る
     private Animator anim;
 
     public GameObject bach;//バッハ格納用
@@ -57,9 +57,11 @@ public class BachAttacks : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timelimit += Time.deltaTime;//時間を測る
+         
+         timelimit += Time.deltaTime;//時間を測る
 
-        if (timelimit < 20)//20秒経つまではこれ
+        
+        if (timelimit < 30)//20秒経つまではこれ
         {
             //主人公側を向く
             if (this.bach.transform.position.x < playerTransform.position.x)
@@ -90,9 +92,10 @@ public class BachAttacks : MonoBehaviour
                 Attack_3();
             }
         }
-        else if (timelimit >= 20)//30秒経ったら即死
+        else if (timelimit >= 30)//30秒経ったら即死
         {
             Attack_toDeath();
+            timelimit = 0f; 
         }
 
     }
@@ -213,6 +216,7 @@ public class BachAttacks : MonoBehaviour
         {
             endobj = Instantiate(end, new Vector3(0, 10, 0), Quaternion.identity);//オブジェクトにして画面に表示
             Attacking = 4;//何個も生成されないようにする
+            Attacking = 0;
         }
     }
 }

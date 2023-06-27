@@ -95,7 +95,7 @@ public class SyuzinkouController : MonoBehaviour
         }*/
 
         //画面外に出たら最初から
-        if (transform.position.y < -21)
+        if ((80< transform.position.y)||(transform.position.y < -21))
         {
             SceneManager.LoadScene("GameOverScene");
         }
@@ -141,7 +141,7 @@ public class SyuzinkouController : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy1"))
         {
             canJump = true;
-            wkHP -= 50;
+            wkHP -= 30;
             hpSlider.value = (float)wkHP / (float)onpuHP;//スライダは０?1.0で表現するため最大HPで割って少数点数字に変換
                                                          // HPが0以下になった場合、自らを消す
             if (wkHP <= 0)

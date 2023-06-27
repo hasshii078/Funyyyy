@@ -15,7 +15,7 @@ public class SyuzinkouControllerHard : MonoBehaviour
     public Rigidbody objectToThrow;
     public float throwForce = 10f;
     Animator animator;
-    public GameObject OnpuPrefab; //音符のプレハブ
+    public GameObject OnpuPrefabHard; //音符のプレハブ
     public float MoveSpeed = 20.0f;
     
     public bool lr;//ト音記号が左右どちらを向いているかを示す
@@ -95,7 +95,7 @@ public class SyuzinkouControllerHard : MonoBehaviour
         }*/
 
         //画面外に出たら最初から
-        if (transform.position.y < -21)
+        if ((80 < transform.position.y) || transform.position.y < -21)
         {
             SceneManager.LoadScene("GameOverHardScene");
         }
@@ -103,7 +103,7 @@ public class SyuzinkouControllerHard : MonoBehaviour
         //Bを押したら音符発射
         if (Input.GetKeyDown(KeyCode.B))
         {
-            Instantiate(OnpuPrefab, transform.position, Quaternion.identity);
+            Instantiate(OnpuPrefabHard, transform.position, Quaternion.identity);
             audioSource.PlayOneShot(kougeki);
         }
 
@@ -157,7 +157,7 @@ public class SyuzinkouControllerHard : MonoBehaviour
     {
     
         if (other.CompareTag("Finish"))
-        {
+        { 
             SceneManager.LoadScene("BossHardScene");
         }
     }

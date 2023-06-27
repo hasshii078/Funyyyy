@@ -27,21 +27,19 @@ public class BachMove : MonoBehaviour
     // Start is called before the first frame update
     public void OnpuHit1()
     {
-        wkHP -= 10;
+        wkHP -= 20;
         hpSlider.value = (float)wkHP / (float)enemyHP;//スライダは０?1.0で表現するため最大HPで割って少数点数字に変換
-                                                      // HPが0以下になった場合、自らを消す
-        if (wkHP == 0)
+
+        // HPが0以下になった場合、自らを消す
+        if (wkHP <= 0)
         {
             anim.SetBool("win", true);
 
-            Destroy(this.gameObject,5f);
+            Destroy(this.gameObject,3.0f);
             
-            Initiate.Fade("ClearScene", Color.black, 5.0f);
-            Destroy(this.gameObject,3f);
-            
-            Initiate.Fade("ClearScene", Color.black, 2.0f);
-
-                        //SceneManager.LoadScene("ClearScene");
+            Initiate.Fade("ClearScene", Color.black, 3.0f);
+           
+            //SceneManager.LoadScene("ClearScene");
             //Invoke("LoadClearScene", 4f);
         }
             
@@ -63,8 +61,8 @@ public class BachMove : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
-    {//動きの設定
+   // void FixedUpdate()
+    //動きの設定
         /*int xVector = -1;
         if (rightTleftF) {
             xVector = 1;
@@ -83,5 +81,5 @@ public class BachMove : MonoBehaviour
         else { 
             rightTleftF= false;
         }*/
-    }
+    
 }

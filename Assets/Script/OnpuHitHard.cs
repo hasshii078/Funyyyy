@@ -1,10 +1,10 @@
 using UnityEngine;
 using System.Collections;
 
-public class OnpuHit : MonoBehaviour
+public class OnpuHitHard : MonoBehaviour
 {
     //code.lrを代入する変数Lr Start内での初期化だとFixedUpdateの実行に間に合わずエラーが出るのでここで宣言する
-    private bool Lr;
+    private bool Rr;
     public static bool band_bakuhatsu = false;//爆発したかどうか
 
     void Start()
@@ -12,10 +12,11 @@ public class OnpuHit : MonoBehaviour
         //SyuzinkouControllerからパブリック変数lrを持ってくる
         GameObject Toonkigou;
         SyuzinkouController code;
+        SyuzinkouControllerHard codeH;
         Toonkigou = GameObject.Find("toonkigou");
-        code = Toonkigou.GetComponent<SyuzinkouController>();
-        Lr = code.lr;
-       
+        codeH = Toonkigou.GetComponent<SyuzinkouControllerHard>();
+        //Lr = code.lr;
+        Rr = codeH.lr;
     }
 
     void OnBecameInvisible()
@@ -25,7 +26,7 @@ public class OnpuHit : MonoBehaviour
     void FixedUpdate()
     {
         //ト音記号の向く方向に発射される
-        if (Lr)
+        if (Rr)
         {
             this.GetComponent<Rigidbody2D>().velocity = new Vector2(-20, 0);
         }
@@ -46,9 +47,10 @@ public class OnpuHit : MonoBehaviour
             Invoke("ReturnFalse", 0.01f);//すぐfalseに戻す
 
         }
-        if (trigger.gameObject.GetComponent<BachMove>())
+        
+        if (trigger.gameObject.GetComponent<BachMoveHard>())
         {
-            trigger.gameObject.GetComponent<BachMove>().OnpuHit1();
+            trigger.gameObject.GetComponent<BachMoveHard>().OnpuHit2();
             Destroy(this.gameObject);
         }
     }

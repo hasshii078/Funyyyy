@@ -25,19 +25,17 @@ public class BachMoveHard : MonoBehaviour
 
 
     // Start is called before the first frame update
-    public void OnpuHit1()
+    public void OnpuHit2()
     {
-        wkHP -= 10;
+        wkHP -= 20;
         hpSlider.value = (float)wkHP / (float)enemyHP;//スライダは０?1.0で表現するため最大HPで割って少数点数字に変換
                                                       // HPが0以下になった場合、自らを消す
-        if (wkHP == 0)
+        if (wkHP <= 0)
         {
             anim.SetBool("win", true);
-            Destroy(this.gameObject,5f);
+            Destroy(this.gameObject,3.0f);
             
-            Initiate.Fade("ClearSceneH", Color.black, 5.0f);
-                        //SceneManager.LoadScene("ClearScene");
-            //Invoke("LoadClearScene", 4f);
+            Initiate.Fade("ClearSceneH", Color.black, 3.0f);
         }
             
     }
