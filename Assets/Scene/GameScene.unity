@@ -2974,6 +2974,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66499e48bf5eed841ab6a2ccf617635c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jumpForce: 1100
+  walkForce: 140
+  maxWalkSpeed: 8
   objectToThrow: {fileID: 0}
   throwForce: 10
   OnpuPrefab: {fileID: 4498878194302161388, guid: 1885ec5840d638d428d2d20ce63a49dd, type: 3}

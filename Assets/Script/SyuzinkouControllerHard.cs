@@ -8,9 +8,9 @@ public class SyuzinkouControllerHard : MonoBehaviour
 {
     // Start is called before the first frame update
     Rigidbody2D rigid2D;
-    float jumpForce = 1200.0f;　　//ジャンプの高さ
-    float walkForce = 120.0f;　　 //移動速度
-    float maxWalkSpeed = 5.0f;   //最大移動速度
+    public float jumpForce = 1200.0f;　　//ジャンプの高さ
+    public float walkForce = 120.0f;　　 //移動速度
+    public float maxWalkSpeed = 5.0f;   //最大移動速度
     private bool canJump = true;
     public Rigidbody objectToThrow;
     public float throwForce = 10f;

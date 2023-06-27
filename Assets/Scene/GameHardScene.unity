@@ -3097,6 +3097,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66499e48bf5eed841ab6a2ccf617635c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jumpForce: 1100
+  walkForce: 140
+  maxWalkSpeed: 8
   objectToThrow: {fileID: 0}
   throwForce: 10
   OnpuPrefab: {fileID: 4498878194302161388, guid: 1885ec5840d638d428d2d20ce63a49dd, type: 3}
@@ -3288,9 +3291,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e594b5a69a07c440a1e750b7d0ee200, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jumpForce: 1200
+  walkForce: 120
+  maxWalkSpeed: 5
   objectToThrow: {fileID: 0}
   throwForce: 10
-  OnpuPrefabHard: {fileID: 0}
+  OnpuPrefabHard: {fileID: 4498878194302161388, guid: 0fd6b92ea5259a84fb3ecd10b5d6cc99, type: 3}
   MoveSpeed: 40
   lr: 0
   onpuHP: 100
