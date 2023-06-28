@@ -18,13 +18,24 @@ public class KamaHit : MonoBehaviour
 
 	void OnTriggerEnter2D(Collider2D trigger)
 	{
-		if (trigger.gameObject.GetComponent<BandmanController>())
+        if (trigger.gameObject.GetComponent<BandmanController>())
+        {
+            trigger.gameObject.GetComponent<BandmanController>().OnpuHit1();
+        }
+        if (StageSelectButton.stage == 0)
 		{
-			trigger.gameObject.GetComponent<BandmanController>().OnpuHit1();
+			if (trigger.gameObject.GetComponent<BachMove>())
+			{
+				trigger.gameObject.GetComponent<BachMove>().OnpuHit1();
+			}
 		}
-		if (trigger.gameObject.GetComponent<BachMove>())
+		else if (StageSelectButton.stage == 1)
 		{
-			trigger.gameObject.GetComponent<BachMove>().OnpuHit1();
-		}
+
+            if (trigger.gameObject.GetComponent<BachMoveHard>())
+            {
+                trigger.gameObject.GetComponent<BachMoveHard>().OnpuHit2();
+            }
+        }
 	}
 }
