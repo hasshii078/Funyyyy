@@ -76,7 +76,7 @@ public class BandmanController : MonoBehaviour
                             Quaternion.identity
                         );
                         bullet.SetMoveVec(playerObj.transform.position - transform.position);
-                        Destroy(bullet,5.0f);
+                        Destroy(bullet.gameObject,7.0f);
                     }
                     break;
 
@@ -92,6 +92,7 @@ public class BandmanController : MonoBehaviour
                         bullet.SetMoveVec(Quaternion.AngleAxis(15, new Vector3(0, 0, 1)) * new Vector3(-1, 0, 0));
                         bullet = (EnemyShot)Instantiate(shotData.bullet, transform.position, Quaternion.identity);
                         bullet.SetMoveVec(Quaternion.AngleAxis(-15, new Vector3(0, 0, 1)) * new Vector3(-1, 0, 0));
+                        Destroy(bullet.gameObject, 7.0f);
                     }
                     break;
             }

@@ -7,6 +7,7 @@ public class StartButton : MonoBehaviour
 {
     public void OnClickStartButton()
     {
+        StageSelectButton.stage = 0;
         //SceneManager.LoadScene("GameScene");
         Initiate.Fade("GameScene", Color.black, 1.0f);
         Time.timeScale = 1f;

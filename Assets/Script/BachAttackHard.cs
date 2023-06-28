@@ -61,7 +61,7 @@ public class BachAttackHard : MonoBehaviour
         timelimit += Time.deltaTime;//時間を測る
 
 
-        if (timelimit < 30)//20秒経つまではこれ
+        if (timelimit < 30)//30秒経つまではこれ
         {
             //主人公側を向く
             if (this.bach.transform.position.x < playerTransform.position.x)
@@ -77,7 +77,7 @@ public class BachAttackHard : MonoBehaviour
             if (AttackType == 0)
             {
                 movePosition = new Vector3(posi[0, Random.Range(0, 2)], posi[1, Random.Range(0, 2)], 0);//ビーム時の移動場所を予め決める
-                AttackType = Random.Range(1, 3);//(n,m)でn以上m未満のランダムな整数
+                AttackType = Random.Range(1, 4);//(n,m)でn以上m未満のランダムな整数
             }
             else if (AttackType == 1) //レーザー攻撃が選ばれた場合
             {

@@ -13,13 +13,26 @@ public class LaserMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //BachAttacksにある値を持ってくる
-        BachAttacks code;
-        bach = GameObject.Find("Bach");
-        code = bach.GetComponent<BachAttacks>();
-        player = code.player;
-        laserpoint = code.laserpoint;
-        playerTransform = player.transform;//主人公の座標を取得
+        if (StageSelectButton.stage == 0)
+        {
+            //BachAttacksにある値を持ってくる
+            BachAttacks code;
+            bach = GameObject.Find("Bach");
+            code = bach.GetComponent<BachAttacks>();
+            player = code.player;
+            laserpoint = code.laserpoint;
+            playerTransform = player.transform;//主人公の座標を取得
+        }
+        else if (StageSelectButton.stage == 1)
+        {
+            BachAttackHard code;
+            bach = GameObject.Find("Bach");
+            code = bach.GetComponent<BachAttackHard>();
+            player = code.player;
+            laserpoint = code.laserpoint;
+            playerTransform = player.transform;
+        }
+        
     }
 
     // Update is called once per frame
