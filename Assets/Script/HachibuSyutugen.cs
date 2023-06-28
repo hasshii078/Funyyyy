@@ -24,7 +24,7 @@ public class HachibuSyutugen : MonoBehaviour
     void Update()
     {
         //Vキーが押されたら八分音符表示
-        if (Input.GetKey(KeyCode.V))
+        if (Input.GetKey(KeyCode.O))
         {
             buki.SetActive(true);//★八分音符を表示する
             Attack();

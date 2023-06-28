@@ -1705,6 +1705,7 @@ GameObject:
   - component: {fileID: 1444343169}
   - component: {fileID: 1444343170}
   - component: {fileID: 1444343171}
+  - component: {fileID: 1444343172}
   m_Layer: 6
   m_Name: Bach
   m_TagString: Enemy
@@ -1901,8 +1902,31 @@ MonoBehaviour:
   speed: 2
   gravity: 0
   player: {fileID: 1809954989}
-  enemyHP: 300
+  enemyHP: 250
   hpSlider: {fileID: 730704087}
+--- !u!114 &1444343172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1444343163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cee21dfebac85e47a163c2372a8950d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bach: {fileID: 1444343163}
+  player: {fileID: 1809954989}
+  laser: {fileID: 474197774389284898, guid: d8c24fe0b9370aa4387b528746b73cbc, type: 3}
+  laserpoint: {fileID: 0}
+  organ: {fileID: 0}
+  count: 0
+  end: {fileID: 0}
+  endobj: {fileID: 0}
+  speed: 0.5
+  AttackType: 0
+  Attacking: 0
 --- !u!1 &1467884479
 GameObject:
   m_ObjectHideFlags: 0

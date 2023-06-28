@@ -131,17 +131,47 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1006579098295375004, guid: b5a3b1d3bb56d9d48b4fa054fc221b0c, type: 3}
+      propertyPath: m_Text
+      value: 'Walk
+
+
+        Jump
+
+
+        Throw musical note
+
+
+        Beat with
+        note'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1125678854911845628, guid: b5a3b1d3bb56d9d48b4fa054fc221b0c, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 274.7946
+      objectReference: {fileID: 0}
+    - target: {fileID: 1125678854911845628, guid: b5a3b1d3bb56d9d48b4fa054fc221b0c, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 164
+      objectReference: {fileID: 0}
+    - target: {fileID: 1125678854911845628, guid: b5a3b1d3bb56d9d48b4fa054fc221b0c, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -7
+      objectReference: {fileID: 0}
     - target: {fileID: 1685762933811849661, guid: b5a3b1d3bb56d9d48b4fa054fc221b0c, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 315
+      value: 293
       objectReference: {fileID: 0}
     - target: {fileID: 1685762933811849661, guid: b5a3b1d3bb56d9d48b4fa054fc221b0c, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -184.7
+      value: -184
       objectReference: {fileID: 0}
     - target: {fileID: 2662757766480614398, guid: b5a3b1d3bb56d9d48b4fa054fc221b0c, type: 3}
       propertyPath: m_Name
       value: Sousahouhou
+      objectReference: {fileID: 0}
+    - target: {fileID: 4137874147482763836, guid: b5a3b1d3bb56d9d48b4fa054fc221b0c, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4990214593347532820, guid: b5a3b1d3bb56d9d48b4fa054fc221b0c, type: 3}
       propertyPath: m_Pivot.x
@@ -226,6 +256,22 @@ PrefabInstance:
     - target: {fileID: 4990214593347532820, guid: b5a3b1d3bb56d9d48b4fa054fc221b0c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5646950992196680595, guid: b5a3b1d3bb56d9d48b4fa054fc221b0c, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5646950992196680595, guid: b5a3b1d3bb56d9d48b4fa054fc221b0c, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 166
+      objectReference: {fileID: 0}
+    - target: {fileID: 6223105242016018628, guid: b5a3b1d3bb56d9d48b4fa054fc221b0c, type: 3}
+      propertyPath: m_Text
+      value: Operation
+      objectReference: {fileID: 0}
+    - target: {fileID: 7873440533136396885, guid: b5a3b1d3bb56d9d48b4fa054fc221b0c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -55,12 +55,12 @@ public class SyuzinkouControllerHard : MonoBehaviour
 
         //左右移動
         int key = 0;
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.D))
         {
             key = 1;
             lr = false;
         }
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.A))
         {
             key = -1;
             lr = true;
@@ -101,14 +101,14 @@ public class SyuzinkouControllerHard : MonoBehaviour
         }
 
         //Bを押したら音符発射
-        if (Input.GetKeyDown(KeyCode.B))
+        if (Input.GetKeyDown(KeyCode.P))
         {
             Instantiate(OnpuPrefabHard, transform.position, Quaternion.identity);
             audioSource.PlayOneShot(kougeki);
         }
 
         //Vを押したら鎌で攻撃
-        if (Input.GetKey(KeyCode.V))//元はGetKeyDown
+        if (Input.GetKey(KeyCode.O))//元はGetKeyDown
         {
             this.animator.SetBool("attack", true);
 
@@ -141,12 +141,23 @@ public class SyuzinkouControllerHard : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy1"))
         {
             canJump = true;
-            wkHP -= 50;
+            wkHP -= 40;
             hpSlider.value = (float)wkHP / (float)onpuHP;//スライダは０?1.0で表現するため最大HPで割って少数点数字に変換
                                                          // HPが0以下になった場合、自らを消す
             if (wkHP <= 0)
             {
                 SceneManager.LoadScene("GameOverHardScene");
+            }
+        }
+        if (collision.gameObject.CompareTag("Enemy2"))
+        {
+            canJump = true;
+            wkHP -= 100;
+            hpSlider.value = (float)wkHP / (float)onpuHP;//スライダは０?1.0で表現するため最大HPで割って少数点数字に変換
+                                                         // HPが0以下になった場合、自らを消す
+            if (wkHP <= 0)
+            {
+                SceneManager.LoadScene("GameOverScene");
             }
         }
 

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 //using System;
 
-public class BachAttacks : MonoBehaviour
+public class BachAttackHard : MonoBehaviour
 {
-    public static float timelimit=0f;//即死攻撃用に時間測る
+    public static float timelimit = 0f;//即死攻撃用に時間測る
     private Animator anim;
 
     public GameObject bach;//バッハ格納用
@@ -57,10 +57,10 @@ public class BachAttacks : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-         
-         timelimit += Time.deltaTime;//時間を測る
 
-        
+        timelimit += Time.deltaTime;//時間を測る
+
+
         if (timelimit < 30)//20秒経つまではこれ
         {
             //主人公側を向く
@@ -87,15 +87,15 @@ public class BachAttacks : MonoBehaviour
             {
                 Attack_2();
             }
-            /*else if (AttackType == 3)
+            else if (AttackType == 3)
             {
                 Attack_3();
-            }*/
+            }
         }
         else if (timelimit >= 30)//30秒経ったら即死
         {
             Attack_toDeath();
-            timelimit = 0f; 
+            timelimit = 0f;
         }
 
     }
@@ -112,7 +112,7 @@ public class BachAttacks : MonoBehaviour
             if (Attacking == 0)
             {
                 Attacking = 1;//状態を攻撃中に設定
-                
+
                 //BachSprite.sprite = Bachbright;//バッハを光ってる画像に変える
                 laserobj = Instantiate(laser, this.bach.transform.position, Quaternion.identity);//レーザーをオブジェクトにして画面に表示
                 laserpoint.position = playerTransform.position;//レーザーの目的地だったが主人公の座標を示すものにしてみる。この時点で座標を取り、ビーム発射中随時主人公の座標を更新しないようにする。
@@ -122,7 +122,7 @@ public class BachAttacks : MonoBehaviour
         //攻撃終了(AttackType=0にする)
         if (Attacking == 2)
         {
-            anim.SetBool("bright",false);
+            anim.SetBool("bright", false);
             //BachSprite.sprite = BachNormal;//バッハの画像を戻す
             AttackType = 0;//攻撃前の状態へ
             Attacking = 0;//状態を攻撃前に設定

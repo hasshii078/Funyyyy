@@ -17,7 +17,7 @@ public class AnimeHachibuAttack : MonoBehaviour
     void Update()
     {
         //Vキーが押されたら攻撃する(attackをtrueにしてアニメーション再生)
-        if (Input.GetKey(KeyCode.V))
+        if (Input.GetKey(KeyCode.O))
         {
             animh.SetBool("Attack",true);
            
