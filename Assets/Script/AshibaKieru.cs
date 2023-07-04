@@ -3,24 +3,23 @@ using System.Collections;
 
 public class AshibaKieru : MonoBehaviour
 {
+    // 足場のゲームオブジェクトを設定
+    public GameObject scaffold;
 
-    public float life_time = 1.5f;
-    float time = 0f;
-
-    // Use this for initialization
     void Start()
     {
-        time = 0;
+        // Coroutineを開始
+        StartCoroutine(ShowHideScaffold());
     }
 
-    // Update is called once per frame
-    void Update()
+    IEnumerator ShowHideScaffold()
     {
-        time += Time.deltaTime;
-        print(time);
-        if (time > life_time)
-        {
-            Destroy(gameObject);
-        }
+            // 足場を表示する
+            scaffold.SetActive(true);
+
+            // 3秒待つ
+            yield return new WaitForSeconds(50.0f);
+       
+        
     }
 }
